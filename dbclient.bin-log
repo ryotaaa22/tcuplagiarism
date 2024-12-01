@@ -1,0 +1,453 @@
+[34m2024-10-15 16:40:55[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 16:43:13[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-10-15 16:43:13[39m [32m[DEBUG][39m Closing connection 1729053791337
+[34m2024-10-15 16:43:30[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-10-15 16:43:30[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 17:02:44[39m [32m[DEBUG][39m Creating undefined connection for 1728981359678
+[34m2024-10-15 17:02:44[39m [32m[DEBUG][39m Closing connection 1728981359678
+[34m2024-10-15 17:02:46[39m [32m[DEBUG][39m Creating undefined connection for 1728981359678
+[34m2024-10-15 17:02:46[39m [32m[DEBUG][39m Closing connection 1728981359678
+[34m2024-10-15 17:02:47[39m [32m[DEBUG][39m Creating undefined connection for 1728981359678
+[34m2024-10-15 17:02:47[39m [32m[DEBUG][39m Closing connection 1728981359678
+[34m2024-10-15 17:04:15[39m [32m[ INFO][39m [33mExecuting: CREATE DATABASE data_users     DEFAULT CHARACTER SET = 'utf8mb4'[39m
+[34m2024-10-15 17:04:15[39m [32m[ INFO][39m [33mResult: 1 rows affected in 2ms[39m
+[34m2024-10-15 17:04:16[39m [32m[ INFO][39m [33mExecuting: USE data_users[39m
+[34m2024-10-15 17:04:16[39m [32m[ INFO][39m [33mResult: 0 rows affected in 1ms[39m
+[34m2024-10-15 17:04:17[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS users (         id INT AUTO_INCREMENT PRIMARY KEY,         username VARCHAR(255) NOT NULL,         password VARCHAR(255) NOT NULL,         role ENUM('user', 'admin') NOT NULL,         reset_token VARCHAR(255),         reset_token_expires DATETIME,         email VARCHAR(255) UNIQUE NOT NULL,         status ENUM('active', 'suspended') DEFAULT 'active'     )[39m
+[34m2024-10-15 17:04:17[39m [32m[ INFO][39m [33mResult: 0 rows affected in 57ms[39m
+[34m2024-10-15 17:04:18[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE posting (         id INT AUTO_INCREMENT PRIMARY KEY,         title VARCHAR(255) NOT NULL,         content TEXT NOT NULL,         section ENUM('News/Announcement', 'Article', 'Journals') NOT NULL,         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP     )[39m
+[34m2024-10-15 17:04:18[39m [32m[ INFO][39m [33mResult: 0 rows affected in 67ms[39m
+[34m2024-10-15 17:04:20[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS user_posts (         id INT AUTO_INCREMENT PRIMARY KEY,         user_id INT NOT NULL,         title VARCHAR(255) NOT NULL,         description TEXT NOT NULL,         image_url VARCHAR(255),         video_url VARCHAR(255),         tags VARCHAR(255),         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,         FOREIGN KEY (user_id) REFERENCES users(id)     )[39m
+[34m2024-10-15 17:04:20[39m [32m[ INFO][39m [33mResult: 0 rows affected in 98ms[39m
+[34m2024-10-15 17:04:21[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE posting     ADD COLUMN images TEXT,     ADD COLUMN video VARCHAR(255)[39m
+[34m2024-10-15 17:04:22[39m [32m[ INFO][39m [33mResult: 0 rows affected in 241ms[39m
+[34m2024-10-15 17:04:28[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN username VARCHAR(255)[39m
+[34m2024-10-15 17:04:28[39m [32m[ INFO][39m [33mResult: 0 rows affected in 81ms[39m
+[34m2024-10-15 17:04:29[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS user_posts (         id INT AUTO_INCREMENT PRIMARY KEY,         user_id INT NOT NULL,         title VARCHAR(255) NOT NULL,         description TEXT NOT NULL,         image_url VARCHAR(255),         video_url VARCHAR(255),         tags VARCHAR(255),         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,         FOREIGN KEY (user_id) REFERENCES users(id)     )[39m
+[34m2024-10-15 17:04:29[39m [32m[ INFO][39m [33mResult: 0 rows affected in 4ms[39m
+[34m2024-10-15 17:04:31[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS posts(         id INT AUTO_INCREMENT PRIMARY KEY,         admin_id INT,         title VARCHAR(255) NOT NULL,         content TEXT NOT NULL,         image_url VARCHAR(255),         video_url VARCHAR(255),         tags VARCHAR(255),         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,         FOREIGN KEY (admin_id) REFERENCES users(id)     )[39m
+[34m2024-10-15 17:04:31[39m [32m[ INFO][39m [33mResult: 0 rows affected in 67ms[39m
+[34m2024-10-15 17:04:32[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN status ENUM('pending', 'approved', 'declined') DEFAULT 'pending'[39m
+[34m2024-10-15 17:04:32[39m [32m[ INFO][39m [33mResult: 0 rows affected in 219ms[39m
+[34m2024-10-15 17:20:48[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 17:21:14[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 17:31:43[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-10-15 20:16:28[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:16:49[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:17:05[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 20:24:05[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 20:32:47[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:36:20[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 20:37:00[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 20:37:27[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 20:37:32[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 20:44:55[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 20:45:16[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:45:52[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:45:52[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 20:50:24[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:50:33[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:50:43[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:51:19[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:53:25[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:54:59[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 20:55:26[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 20:56:08[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 20:56:27[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 20:57:37[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:00:58[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:05:31[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 21:06:51[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:08:16[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 21:14:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:19:23[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:22:44[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:24:55[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:28:57[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:34:05[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:36:38[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:38:49[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:45:46[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 21:45:52[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 21:48:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-10-15 21:48:34[39m [32m[ INFO][39m [33mExecuting: CREATE DATABASE data_users     DEFAULT CHARACTER SET = 'utf8mb4'[39m
+[34m2024-10-15 21:48:34[39m [32m[ERROR][39m [31mCan't create database 'data_users'; database exists[39m
+[34m2024-10-15 21:48:37[39m [32m[ INFO][39m [33mExecuting: USE data_users[39m
+[34m2024-10-15 21:48:37[39m [32m[ INFO][39m [33mResult: 0 rows affected in 1ms[39m
+[34m2024-10-15 21:48:42[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN file_path VARCHAR(255)[39m
+[34m2024-10-15 21:48:43[39m [32m[ INFO][39m [33mResult: 0 rows affected in 292ms[39m
+[34m2024-10-15 21:48:46[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN status ENUM('pending', 'approved', 'declined') DEFAULT 'pending'[39m
+[34m2024-10-15 21:48:46[39m [32m[ERROR][39m [31mDuplicate column name 'status'[39m
+[34m2024-10-15 21:49:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 21:49:03[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 22:02:40[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 22:02:43[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 22:04:06[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-10-15 22:36:52[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 22:37:12[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 22:41:05[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 22:43:30[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 22:44:14[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 22:54:40[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 22:57:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 23:03:06[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 23:04:15[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 23:25:58[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 23:26:54[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 23:33:45[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 23:35:07[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 23:50:19[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 23:56:45[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-15 23:57:16[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-15 23:59:09[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 00:01:26[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 00:01:42[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 00:02:56[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 00:04:38[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 00:06:48[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 00:07:14[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-10-16 00:07:14[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE status = 'approved' LIMIT 100[39m
+[34m2024-10-16 00:07:14[39m [32m[ INFO][39m [33mResult: 4 rows retrieved in 4ms[39m
+[34m2024-10-16 00:08:31[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 00:09:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 00:58:09[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 00:58:09[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 01:05:13[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 01:06:20[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 01:09:19[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 01:12:25[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 04:51:42[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 05:00:30[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 05:03:04[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 05:03:33[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 05:04:39[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 05:07:59[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 05:09:09[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 05:12:19[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 05:13:54[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 05:14:49[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-16 05:18:04[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-16 05:18:56[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-10-31 15:02:00[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-10-31 15:05:21[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-01 18:16:36[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-01 18:16:36[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-01 18:16:52[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-01 18:16:52[39m [32m[DEBUG][39m Closing connection 1729053791337_tree
+[34m2024-11-01 22:14:19[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-01 22:14:24[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-01 22:14:24[39m [32m[DEBUG][39m Closing connection 1729053791337_tree
+[34m2024-11-02 21:40:06[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-02 21:54:59[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-02 21:56:01[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-02 21:56:04[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-02 21:59:11[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-05 22:23:00[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-05 22:23:00[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-05 22:24:26[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-05 22:30:30[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-05 22:31:07[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-05 22:32:41[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 15:43:04[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 15:43:21[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 15:43:39[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 15:43:39[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 15:45:30[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 15:46:11[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 15:46:15[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 15:57:49[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 15:57:57[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 15:58:13[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 15:59:52[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 16:00:05[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 16:01:00[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 16:01:23[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 16:02:14[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 16:05:14[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 16:05:42[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 16:05:54[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 16:08:31[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 16:08:37[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 16:09:09[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 16:09:58[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 16:10:18[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 16:10:23[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 18:31:33[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:32:18[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:33:41[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:33:42[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:33:46[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-07 18:33:54[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-07 18:34:06[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-07 18:35:06[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:35:14[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:35:43[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:36:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 18:36:34[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:36:57[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:36:57[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 18:43:05[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:43:29[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:43:36[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 18:57:41[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:57:41[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 18:58:14[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 18:58:28[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 18:59:14[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 19:07:29[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:12:48[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 19:17:12[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:18:32[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:19:34[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:21:05[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 19:25:25[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:26:42[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:28:18[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 19:42:59[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 19:43:47[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 19:47:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 20:15:49[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 20:15:49[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 20:24:24[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 20:34:29[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 20:50:44[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 20:55:06[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 20:55:21[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 20:57:27[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 21:04:11[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 21:04:58[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 21:05:42[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-07 21:05:45[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-07 21:39:15[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 21:41:53[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 21:48:38[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 21:48:48[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-07 22:04:45[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:05:41[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:08:13[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:09:59[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:11:06[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:15:06[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:19:50[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:21:10[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:24:53[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:25:32[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:28:31[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-07 22:29:09[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 21:41:30[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 21:53:07[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 21:54:27[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:02:50[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:05:56[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:19:59[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:23:39[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:26:13[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:26:47[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-09 22:26:57[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:28:46[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:35:43[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:43:52[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:47:01[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:51:51[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:55:10[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 22:56:41[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:00:15[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:03:07[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:07:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:08:04[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:16:24[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:18:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:22:02[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-09 23:23:30[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-11 15:14:09[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 14:48:10[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 14:52:09[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 14:53:24[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 14:58:53[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 15:07:04[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 15:25:05[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 15:33:52[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 15:45:10[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 15:54:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 15:55:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:01:01[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:01:15[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-12 16:02:41[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:05:56[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:07:54[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-12 16:10:56[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:11:44[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:16:54[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:17:29[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:23:58[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:25:45[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:28:47[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:35:59[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:37:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:42:48[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 16:45:28[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-12 16:45:28[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 16:48:20[39m [32m[DEBUG][39m Creating undefined connection for 1728135929379
+[34m2024-11-12 16:48:20[39m [32m[DEBUG][39m Closing connection 1728135929379
+[34m2024-11-12 16:48:25[39m [32m[DEBUG][39m Creating undefined connection for 1728135929379
+[34m2024-11-12 16:48:25[39m [32m[DEBUG][39m Closing connection 1728135929379
+[34m2024-11-12 16:48:27[39m [32m[DEBUG][39m Creating undefined connection for 1728135929379
+[34m2024-11-12 16:48:27[39m [32m[DEBUG][39m Closing connection 1728135929379
+[34m2024-11-12 16:48:28[39m [32m[DEBUG][39m Creating undefined connection for 1728135929379
+[34m2024-11-12 16:48:28[39m [32m[DEBUG][39m Closing connection 1728135929379
+[34m2024-11-12 16:48:35[39m [32m[ INFO][39m [33mExecuting: CREATE DATABASE IF NOT EXISTS data_users DEFAULT CHARACTER SET = 'utf8mb4'[39m
+[34m2024-11-12 16:48:35[39m [32m[ INFO][39m [33mResult: 0 rows affected in 3ms[39m
+[34m2024-11-12 16:48:39[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS users (     id INT AUTO_INCREMENT PRIMARY KEY,     username VARCHAR(255) NOT NULL,     password VARCHAR(255) NOT NULL,     role ENUM('user', 'admin') NOT NULL,     reset_token VARCHAR(255),     reset_token_expires DATETIME,     email VARCHAR(255) UNIQUE NOT NULL,     status ENUM('active', 'suspended') DEFAULT 'active' )[39m
+[34m2024-11-12 16:48:39[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 16:48:40[39m [32m[ INFO][39m [33mExecuting: USE data_users[39m
+[34m2024-11-12 16:48:40[39m [32m[ INFO][39m [33mResult: 0 rows affected in 1ms[39m
+[34m2024-11-12 16:48:41[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS users (     id INT AUTO_INCREMENT PRIMARY KEY,     username VARCHAR(255) NOT NULL,     password VARCHAR(255) NOT NULL,     role ENUM('user', 'admin') NOT NULL,     reset_token VARCHAR(255),     reset_token_expires DATETIME,     email VARCHAR(255) UNIQUE NOT NULL,     status ENUM('active', 'suspended') DEFAULT 'active' )[39m
+[34m2024-11-12 16:48:41[39m [32m[ INFO][39m [33mResult: 0 rows affected in 3ms[39m
+[34m2024-11-12 16:57:50[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  MODIFY COLUMN category ENUM('News', 'Sports', 'Academics') NOT NULL[39m
+[34m2024-11-12 16:57:50[39m [32m[ERROR][39m [31mUnknown column 'category' in 'user_posts'[39m
+[34m2024-11-12 16:58:02[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  MODIFY COLUMN category ENUM('News', 'Sports', 'Academics') NOT NULL[39m
+[34m2024-11-12 16:58:02[39m [32m[ERROR][39m [31mUnknown column 'category' in 'user_posts'[39m
+[34m2024-11-12 16:58:04[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN username VARCHAR(255)[39m
+[34m2024-11-12 16:58:04[39m [32m[ERROR][39m [31mDuplicate column name 'username'[39m
+[34m2024-11-12 16:58:06[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  ADD COLUMN status ENUM('pending', 'approved', 'declined') DEFAULT 'pending'[39m
+[34m2024-11-12 16:58:06[39m [32m[ERROR][39m [31mDuplicate column name 'status'[39m
+[34m2024-11-12 16:58:07[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  MODIFY COLUMN category ENUM('News', 'Sports', 'Academics') NOT NULL[39m
+[34m2024-11-12 16:58:07[39m [32m[ERROR][39m [31mUnknown column 'category' in 'user_posts'[39m
+[34m2024-11-12 16:58:37[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  ADD COLUMN category ENUM('News', 'Sports', 'Academics') NOT NULL[39m
+[34m2024-11-12 16:58:37[39m [32m[ INFO][39m [33mResult: 0 rows affected in 24ms[39m
+[34m2024-11-12 16:59:01[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:01:42[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:11:35[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 17:11:35[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-12 17:11:35[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE status = 'pending' LIMIT 100[39m
+[34m2024-11-12 17:11:35[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:11:46[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE status = 'pending' LIMIT 100[39m
+[34m2024-11-12 17:11:46[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:11:51[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE status = 'pending' LIMIT 100[39m
+[34m2024-11-12 17:11:51[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:11:57[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE status = '' LIMIT 100[39m
+[34m2024-11-12 17:11:57[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:12:02[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE status = LIMIT 100[39m
+[34m2024-11-12 17:12:02[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:12:19[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:26:07[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 17:26:07[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-12 17:26:07[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  ADD COLUMN category ENUM('News', 'Sports', 'Academics') NOT NULL[39m
+[34m2024-11-12 17:26:07[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:10[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN username VARCHAR(255)[39m
+[34m2024-11-12 17:26:10[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:11[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  ADD COLUMN status ENUM('pending', 'approved', 'declined') DEFAULT 'pending'[39m
+[34m2024-11-12 17:26:11[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:12[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts ADD COLUMN video_url VARCHAR(255)[39m
+[34m2024-11-12 17:26:12[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:14[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE user_posts (     id INT AUTO_INCREMENT PRIMARY KEY,     user_id INT NOT NULL,     title VARCHAR(255) NOT NULL,     description TEXT NOT NULL,     file_path VARCHAR(255),     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     FOREIGN KEY (user_id) REFERENCES users(id) )[39m
+[34m2024-11-12 17:26:14[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:16[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE posting  ADD COLUMN images TEXT, ADD COLUMN video VARCHAR(255)[39m
+[34m2024-11-12 17:26:16[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:18[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS users (     id INT AUTO_INCREMENT PRIMARY KEY,     username VARCHAR(255) NOT NULL,     password VARCHAR(255) NOT NULL,     role ENUM('user', 'admin') NOT NULL,     reset_token VARCHAR(255),     reset_token_expires DATETIME,     email VARCHAR(255) UNIQUE NOT NULL,     status ENUM('active', 'suspended') DEFAULT 'active' )[39m
+[34m2024-11-12 17:26:18[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 17:26:20[39m [32m[ INFO][39m [33mExecuting: CREATE DATABASE IF NOT EXISTS data_users DEFAULT CHARACTER SET = 'utf8mb4'[39m
+[34m2024-11-12 17:26:20[39m [32m[ INFO][39m [33mResult: 0 rows affected in 2ms[39m
+[34m2024-11-12 17:26:24[39m [32m[ INFO][39m [33mExecuting: USE data_users[39m
+[34m2024-11-12 17:26:24[39m [32m[ INFO][39m [33mResult: 0 rows affected in 1ms[39m
+[34m2024-11-12 17:26:25[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE IF NOT EXISTS users (     id INT AUTO_INCREMENT PRIMARY KEY,     username VARCHAR(255) NOT NULL,     password VARCHAR(255) NOT NULL,     role ENUM('user', 'admin') NOT NULL,     reset_token VARCHAR(255),     reset_token_expires DATETIME,     email VARCHAR(255) UNIQUE NOT NULL,     status ENUM('active', 'suspended') DEFAULT 'active' )[39m
+[34m2024-11-12 17:26:25[39m [32m[ INFO][39m [33mResult: 0 rows affected in 4ms[39m
+[34m2024-11-12 17:26:26[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE posting (     id INT AUTO_INCREMENT PRIMARY KEY,     title VARCHAR(255) NOT NULL,     content TEXT NOT NULL,     section ENUM('News', 'Sports', 'Academics') NOT NULL,     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP )[39m
+[34m2024-11-12 17:26:26[39m [32m[ERROR][39m [31mTable 'posting' already exists[39m
+[34m2024-11-12 17:27:42[39m [32m[ INFO][39m [33mExecuting: SELECT id, title, category FROM user_posts WHERE status = 'pending' LIMIT 100[39m
+[34m2024-11-12 17:27:42[39m [32m[ INFO][39m [33mResult: 5 rows retrieved in 2ms[39m
+[34m2024-11-12 17:28:01[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:31:38[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:34:17[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:35:39[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:38:20[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:41:51[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 17:43:56[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:50:04[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:54:40[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 17:59:36[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 18:01:13[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 18:02:36[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 18:03:50[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 18:17:31[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 18:28:05[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:02:37[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:09:43[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:15:26[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:19:25[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:22:40[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:25:01[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:28:29[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:29:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 19:29:03[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-12 19:29:03[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM user_posts WHERE category IN ('news', 'sports', 'academics') LIMIT 100[39m
+[34m2024-11-12 19:29:03[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 19:29:05[39m [32m[ INFO][39m [33mExecuting: SELECT * FROM posting LIMIT 100[39m
+[34m2024-11-12 19:29:05[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 19:29:09[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  ADD COLUMN category ENUM('news', 'sports', 'academics') NOT NULL[39m
+[34m2024-11-12 19:29:09[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 19:29:13[39m [32m[ INFO][39m [33mExecuting: ALTER TABLE user_posts  ADD COLUMN category ENUM('news', 'sports', 'academics') NOT NULL[39m
+[34m2024-11-12 19:29:13[39m [32m[ERROR][39m [31mNo database selected[39m
+[34m2024-11-12 19:29:55[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:31:22[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:44:12[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:48:15[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:48:53[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-12 19:50:21[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 19:52:52[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 20:04:10[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 20:09:47[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 20:14:13[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-12 20:22:38[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 00:45:22[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 00:46:16[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 00:52:42[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-21 00:52:52[39m [32m[DEBUG][39m Resource server started on port 8829
+[34m2024-11-21 00:54:13[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-21 00:54:27[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-21 00:56:37[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-21 00:56:50[39m [32m[DEBUG][39m Resource server started on port 8830
+[34m2024-11-21 10:17:45[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 22:02:10[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 22:17:09[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-21 22:17:32[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337
+[34m2024-11-21 22:17:32[39m [32m[ INFO][39m [33mExecuting: CREATE DATABASE plagiarism_checker[39m
+[34m2024-11-21 22:17:32[39m [32m[ INFO][39m [33mResult: 1 rows affected in 5ms[39m
+[34m2024-11-21 22:17:32[39m [32m[DEBUG][39m Start load foreignKey meta data...
+[34m2024-11-21 22:17:32[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_meta
+[34m2024-11-21 22:17:33[39m [32m[DEBUG][39m Load foreignKey meta data success! cost: 151ms
+[34m2024-11-21 22:17:33[39m [32m[DEBUG][39m Closing connection 1729053791337_meta
+[34m2024-11-21 22:17:38[39m [32m[ INFO][39m [33mExecuting: USE plagiarism_checker[39m
+[34m2024-11-21 22:17:38[39m [32m[ INFO][39m [33mResult: 0 rows affected in 2ms[39m
+[34m2024-11-21 22:17:40[39m [32m[ INFO][39m [33mExecuting: CREATE TABLE content (     id INT AUTO_INCREMENT PRIMARY KEY,     text TEXT NOT NULL )[39m
+[34m2024-11-21 22:17:40[39m [32m[ INFO][39m [33mResult: 0 rows affected in 271ms[39m
+[34m2024-11-21 22:17:40[39m [32m[DEBUG][39m Start load foreignKey meta data...
+[34m2024-11-21 22:17:40[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_meta
+[34m2024-11-21 22:17:40[39m [32m[DEBUG][39m Closing connection 1729053791337_meta
+[34m2024-11-21 22:17:40[39m [32m[ERROR][39m [31mExecute fail : SELECT [39m
+[31m        CONSTRAINT_NAME constraint_name,[39m
+[31m        TABLE_SCHEMA table_schema,[39m
+[31m        TABLE_NAME table_name,[39m
+[31m        COLUMN_NAME column_name,[39m
+[31m        REFERENCED_TABLE_SCHEMA referenced_schema,[39m
+[31m        REFERENCED_TABLE_NAME referenced_table,[39m
+[31m        REFERENCED_COLUMN_NAME referenced_column[39m
+[31m         FROM information_schema.KEY_COLUMN_USAGE [39m
+[31m         WHERE REFERENCED_TABLE_NAME is not null[39m
+[34m2024-11-21 22:17:40[39m [32m[ERROR][39m [31mExecute canceled[39m
+[34m2024-11-21 22:17:40[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_meta
+[34m2024-11-21 22:17:40[39m [32m[ERROR][39m [31mError: Execute canceled[39m
+[31m	at c:\Users\user\.vscode\extensions\cweijan.vscode-mysql-client2-7.6.6\out\extension.js:162298:100[39m
+[31m	at r.onResult (c:\Users\user\.vscode\extensions\cweijan.vscode-mysql-client2-7.6.6\out\extension.js:162898:62)[39m
+[31m	at r._addCommandClosedState (c:\Users\user\.vscode\extensions\cweijan.vscode-mysql-client2-7.6.6\out\extension.js:76611:36)[39m
+[31m	at r.query (c:\Users\user\.vscode\extensions\cweijan.vscode-mysql-client2-7.6.6\out\extension.js:76814:30)[39m
+[34m2024-11-21 22:17:40[39m [32m[DEBUG][39m Closing connection 1729053791337_meta
+[34m2024-11-21 22:19:12[39m [32m[ INFO][39m [33mExecuting: SELECT      CONSTRAINT_NAME constraint_name,     TABLE_SCHEMA table_schema,     TABLE_NAME table_name,     COLUMN_NAME column_name,     REFERENCED_TABLE_SCHEMA referenced_schema,     REFERENCED_TABLE_NAME referenced_table,     REFERENCED_COLUMN_NAME referenced_column FROM information_schema.KEY_COLUMN_USAGE  WHERE REFERENCED_TABLE_NAME is not null LIMIT 100[39m
+[34m2024-11-21 22:19:12[39m [32m[ INFO][39m [33mResult: 2 rows retrieved in 151ms[39m
+[34m2024-11-21 22:20:18[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 22:20:19[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-21 22:25:20[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 22:30:40[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+[34m2024-11-21 22:31:38[39m [32m[DEBUG][39m Resource server started on port 8828
+[34m2024-11-21 22:34:20[39m [32m[DEBUG][39m Creating MySQL connection for 1729053791337_tree
+
