@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // Set up MySQL connection pool using environment variables
 const db = mysql.createPool({
-  host: process.env.DB_HOST,  // Database host, e.g., 'localhost' for local or remote DB URL for production
+  host: process.env.DB_HOST,  // Database host
   user: process.env.DB_USER,  // Database user
   password: process.env.DB_PASSWORD,  // Database password
   database: process.env.DB_NAME,  // Database name
@@ -21,9 +21,9 @@ const db = mysql.createPool({
 });
 
 // Function to check plagiarism
-const checkPlagiarism = async (newContent, section) => {
+const checkPlagiarism = async (newContent) => {
   try {
-    // Retrieve all stored content from the 'posting' table
+    // Retrieve all stored content from the plagiarism checker database
     const [results] = await db.query('SELECT content FROM posting');
 
     // Compare each stored content with the incoming content
@@ -37,34 +37,52 @@ const checkPlagiarism = async (newContent, section) => {
       }
     }
 
-    // If no plagiarism is detected, insert new content into the database
-    await db.query('INSERT INTO posting (content, section) VALUES (?, ?)', [newContent, section]);
     return { plagiarized: false };
   } catch (err) {
     throw new Error('Error while processing the plagiarism check: ' + err.message);
   }
 };
 
+// Function to insert post into both the publication and plagiarism checker databases
+const insertPostIntoDatabases = async (newContent, title, section) => {
+  try {
+    // Insert into the publication site database
+    await db.query('INSERT INTO posting (content, title, section) VALUES (?, ?, ?)', [newContent, title, section]);
+
+    // Insert into the plagiarism checker database
+    await db.query('INSERT INTO posting (content, title, section) VALUES (?, ?, ?)', [newContent, title, section]);
+
+    return true; // Successfully inserted into both databases
+  } catch (err) {
+    throw new Error('Error while inserting the post: ' + err.message);
+  }
+};
+
 // Plagiarism check API endpoint
 app.post('/check-plagiarism', async (req, res) => {
-  const { content, section } = req.body;
+  const { content, title, section } = req.body;
 
   // Validate input
-  if (!content || !section) {
-    return res.status(400).json({ error: 'Content and section are required' });
+  if (!content || !title || !section) {
+    return res.status(400).json({ error: 'Content, title, and section are required' });
   }
 
   try {
-    const result = await checkPlagiarism(content, section);
+    // First, check if the content is plagiarized
+    const result = await checkPlagiarism(content);
 
     if (result.plagiarized) {
-      res.status(200).json({
+      // If plagiarized, return the original content
+      return res.status(200).json({
         status: 'Plagiarism detected',
         original_content: result.originalContent,
       });
-    } else {
-      res.status(200).json({ status: 'No plagiarism detected' });
     }
+
+    // If no plagiarism detected, insert the post into both databases
+    await insertPostIntoDatabases(content, title, section);
+
+    res.status(200).json({ status: 'No plagiarism detected' });
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: 'Internal server error' });
